@@ -37,7 +37,7 @@ export default class App extends Component {
           Toggle Random Planet
         </button>
 
-        <div className="row mb2">
+        <div className="row mt-3">
           <div className="col-md-6">
             <ItemList />
           </div>
