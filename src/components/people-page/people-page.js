@@ -48,9 +48,9 @@ export default class PeoplePage extends Component {
   render() {
 
     const itemList = <ItemList 
-    onItemSelected={this.onPersonSelected} 
-    getData={this.swapiService.getAllPeople}
-    renderItem={({name, gender, birthYear}) => `${name} ${gender} ${birthYear}`}/>;
+                      onItemSelected={this.onPersonSelected} 
+                      getData={this.swapiService.getAllPeople}
+                      renderItem={({name, gender, birthYear}) => `${name} ${gender} ${birthYear}`}/>;
     const personDetails = this.state.showPersonDetails ? <PersonDetails personId={this.state.selectedPerson} /> : null;
 
     if (this.state.hasError) {
