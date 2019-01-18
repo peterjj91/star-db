@@ -34,7 +34,11 @@ export default class PeoplePage extends Component {
 
   render() {
 
-    const person = this.state.showPersonDetails ? <PersonDetails personId={this.state.selectedPerson} /> : null;
+    const itemList = <ItemList 
+    onItemSelected={this.onPersonSelected} 
+    getData={this.swapiService.getAllPeople}
+    renderItem={({name, gender, birthYear}) => `${name} ${gender} ${birthYear}`}/>;
+    const personDetails = this.state.showPersonDetails ? <PersonDetails personId={this.state.selectedPerson} /> : null;
 
     if (this.state.hasError) {
       return <ErrorIndicator />;
@@ -43,13 +47,10 @@ export default class PeoplePage extends Component {
     return (
       <div className="row mb2">
         <div className="col-md-6">
-          <ItemList 
-            onItemSelected={this.onPersonSelected} 
-            getData={this.swapiService.getAllPeople}
-            renderItem={({name, gender, birthYear}) => `${name} ${gender} ${birthYear}`}/>
+          {itemList}
         </div>
         <div className="col-md-6">
-          {person}
+          {personDetails}
         </div>
       </div>
     );
