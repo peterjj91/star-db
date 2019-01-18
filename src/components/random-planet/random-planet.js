@@ -18,15 +18,15 @@ export default class RandomPlanet extends Component {
 
   // вызывается сразу после монтирования компонента (вставки в дерево) 
   componentDidMount() {
-    console.log('componentDidMount');
+    console.log("componentDidMount");
     this.updatePlanet();
     this.interval = setInterval(this.updatePlanet, 10000);
-    // clearInterval(this.interval);
   }
   
   // вызывается непосредственно перед размонтированием и уничтожением компонента
   componentWillUnmount() {
-    console.log('componentWillUnmount()');
+    console.log('componentWillUnmount');
+    clearInterval(this.interval);
   }
 
   onPlanetLoaded = (planet) => {
