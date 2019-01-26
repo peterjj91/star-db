@@ -4,43 +4,43 @@ import Spinner from '../spinner';
 
 import SwapiService from '../../services/swapi-service';
 import ErrorButton from "../error-button/error-button";
-import './person-details.css';
+import './item-details.css';
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
 
   swapiService = new SwapiService();
 
   state = {
-    person: {},
+    item: {},
     loading: true, // загрузка 
     error: false // на старте ошибок нет
   };
 
   componentDidMount() {
-    this.updatePerson();
+    this.updateItem();
   };
 
   componentDidUpdate(prevProps) {
-    if (this.props.personId !== prevProps.personId ) {
-      this.updatePerson();
+    if (this.props.itemId !== prevProps.itemId ) {
+      this.updateItem();
     }
   }
 
-  updatePerson() {
-    const { personId } = this.props;
-    if (!personId) {
+  updateItem() {
+    const { itemId } = this.props;
+    if (!itemId) {
       return;
     }
 
     this.swapiService
-      .getPerson(personId)
-      .then(this.onPersonLoaded)
+      .getItem(itemId)
+      .then(this.onItemLoaded)
       .catch(this.onError);
   }
 
-  onPersonLoaded = (person) => {
+  onItemLoaded = (item) => {
     this.setState({
-      person,
+      item,
       loading: false
     })
   };
@@ -55,19 +55,19 @@ export default class PersonDetails extends Component {
 
   render() {
 
-    if (!this.state.person) {
+    if (!this.state.item) {
       return <span>Select a person from a list</span>;
     }
 
-    const { person, loading, error } = this.state; // деструктурировали необходимые данные 
+    const { item, loading, error } = this.state; // деструктурировали необходимые данные 
 
     const hasData = !(loading || error);
 
     const spinner = loading ? <Spinner /> : null;
-    const content = hasData ? <PersonView person={person} /> : null;
+    const content = hasData ? <ItemView item={item} /> : null;
 
     return (
-      <div className="person-details card">
+      <div className="item-details card">
         {spinner}
         {content}
       </div>
@@ -75,12 +75,12 @@ export default class PersonDetails extends Component {
   }
 }
 
-const PersonView = ({person}) => {
-  const { id, name, gender, birthYear, eyeColor } = person; // деструктурировали необходимые данные 
+const ItemView = ({item}) => {
+  const { id, name, gender, birthYear, eyeColor } = item; // деструктурировали необходимые данные 
 
   return (
     <React.Fragment>
-      <img className="person-image"
+      <img className="item-image"
         src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
         alt="character"/>
 
