@@ -29,7 +29,6 @@ export default class App extends Component {
   };
 
   componentDidCatch() {
-    console.log("componentDidCatch");
     this.setState({ hasError: true });
   }
 
@@ -61,10 +60,9 @@ export default class App extends Component {
 
         <div className="row mb2">
           <div className="col-md-6">
-            <ItemList 
-              onItemSelected={this.onPersonSelected} 
-              getData={this.swapiService.getAllPlanets}
-              renderItem={(item) => (<span>{item.name} <button>!</button></span>)}/>
+            <ItemList
+              onItemSelected={this.onPersonSelected}
+              getData={this.swapiService.getAllPlanets} />
           </div>
           <div className="col-md-6">
             <PersonDetails personId={this.state.selectedPerson} />
@@ -73,16 +71,16 @@ export default class App extends Component {
 
         <div className="row mb2">
           <div className="col-md-6">
-            <ItemList 
-              onItemSelected={this.onPersonSelected} 
-              getData={this.swapiService.getAllStarships}
-              renderItem={(item) => item.name}/>
+            <ItemList
+              onItemSelected={this.onPersonSelected}
+              getData={this.swapiService.getAllStarships} />
           </div>
           <div className="col-md-6">
             <PersonDetails personId={this.state.selectedPerson} />
           </div>
         </div>
+
       </div>
     );
   }
-};
+}
