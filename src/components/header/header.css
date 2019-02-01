@@ -26,18 +26,6 @@
   color: #00bc8c;
 }
 
-.navbar-nav a {
-  color: #00bc8c;
-}
-
-.navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000…p='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'");
-}
-
 .header button {
   height: 2.2rem;
   margin-top: 3px;
